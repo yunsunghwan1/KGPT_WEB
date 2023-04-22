@@ -1,0 +1,24 @@
+** 주의사항 GPTapp.urls.py에 path('oracle/', include('oracleapp.urls')),이 있으면 안된다. 
+
+
+1. django-admin startproject config .
+2. django-admin startapp GPTapp
+3. settings.py 폴더에서 설정해야하는 것들 
+	- INSTALLED_APPS에 GPTapp를 추가한다. 
+	-  ALLOWED_HOSTS = ['127.0.0.1']를 추가한다. 
+	- TEMPLATES에서 DIRS부분에  [BASE_DIR / 'templates'],를 추가한다. 
+	-  LANGUAGE_CODE = 'ko-kr'로 변환
+	- TIME_ZONE = 'Asia/Seoul'로 변환
+	-  STATICFILES_DIRS = [BASE_DIR / 'static'] 추가 
+
+4. urls.py 폴더에서
+	- from django.urls import path, include를 선언한다. 
+	-  from GPTapp import views 를 선언한다. 
+	- path('', views.index), 로 경로 설정한다. 
+ 
+5. views.py 폴더에서
+	- from django.http import HttpResponse 를 선언한다.
+	-  from django.shortcuts import render 를 선언한다. 
+	- def index(request) : return render(request,"GPTapp/index.html",{})로 이동할 HMTL위치를 설정한다. 
+6. GPTapp폴더에 
+	- url 폴더 생성

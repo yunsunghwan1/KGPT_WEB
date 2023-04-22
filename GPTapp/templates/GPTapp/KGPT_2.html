@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Generate Text</title>
+  </head>
+  <body>
+    <h1>Generate Text</h1>
+    <form id="fm" name="fm" method="POST" action="/GPT/start/">
+      {% csrf_token %}
+      <label for="prompt">Prompt:</label><br>
+      <input type="text" name="prompt"><br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    {% if generated_text %}
+      <hr>
+      <h2>Generated Text:</h2>
+      <p>{{ generated_text }}</p>
+      <p>Prompt: {{ prompt }}</p>
+    {% endif %}
+  </body>
+</html>
